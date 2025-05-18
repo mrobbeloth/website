@@ -10,6 +10,16 @@
 
 <h1>Welcome to the Robbeloth Family Website</h1>
 <img src="img/Robbeloth-2671-reduced.jpg" width="600" height="400" alt="The North-Central Ohio based Robbeloth Family"> 
+
+<p>
+<?php
+$visitor_ip = $_SERVER['REMOTE_ADDR'];
+$user_agent_string = $_SERVER['HTTP_USER_AGENT'];
+echo "Hello. Thank you for visiting from <a href=\"https://en.wikipedia.org/wiki/IP_address\"> Internet Protocol (IP) </a> Address: " . $visitor_ip . '. ';
+echo "You are using: " . $user_agent_string . '.';
+?>
+</p>
+
 <p title="Important links">  Dr. Michael Robbeloth is a senior lecturer at OSU in the <a href="https://engineering.osu.edu/">College of Engineering&apos;s</a> <a href="https://cse.osu.edu/">Department of Computer Science and Engineering</a>. Previously, I was an associate professor of <a href="https://cs.mvnu.edu/">Computer Science</a> at 
 Mount Vernon Nazarene University (<a href="https://www.mvnu.edu">MVNU</a>). Dr. Robbeloth is also available to take on professonal speaking engagements or consulting work (see my consulting page). 
 You can learn more about Dr. Robbeloth from following one of the links below: </p>

@@ -1,7 +1,7 @@
 # .cpanel.yml
 deployment:
   tasks:
-    - export DEPLOYPATH="/home/$USER/public_html/"
+    - export DEPLOYPATH="/home/robbjsdz/public_html/"
     - /bin/rsync -a --delete \
         --exclude ".git" \
         --exclude ".github" \

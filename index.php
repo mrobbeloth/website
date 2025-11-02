@@ -8,8 +8,8 @@
 
 <nav>
  <a href="consulting.html"><div>Hire Me</div></a>
- <a href="https://web.archive.org/web/20250528182834/https://cse.osu.edu/people/robbeloth.1"><div>Work @ OSU</div></a>
- <a href="https://www.linkedin.com/in/mrobbeloth/"><div>Linked In Profile</div></a>
+ <a href="https://eed.osu.edu/people/robbeloth.1"><div>Work @ OSU</div></a>
+ <a href="https://www.linkedin.com/in/mrobbeloth/"><div>LinkedIn Profile</div></a>
  <a href="https://www.twitter.com/mrobbeloth    "><div>Twitter Profile</div></a>
  <a href="https://github.com/mrobbeloth"><div>Github Profile</div></a>
 </nav>
@@ -38,10 +38,23 @@ Dr. Robbeloth is available to take on professonal speaking engagements or consul
 You can learn more about Dr. Robbeloth from following one of the links below: </p>
 <ol>
     <a href="consulting.html">Consulting Information</a> <br/>
-    <a href="https://cse.osu.edu/people/robbeloth.1">Work @ OSU</a> <br/>
-    <a href="https://www.linkedin.com/in/mrobbeloth/"> Linked In Profile </a> <br/>
+    <a href="https://eed.osu.edu/people/robbeloth.1">Work @ OSU</a> <br/>
+    <a href="https://www.linkedin.com/in/mrobbeloth/"> LinkedIn Profile </a> <br/>
     <a href="https://www.twitter.com/mrobbeloth">Twitter</a> <br/>
     <a href="https://github.com/mrobbeloth">Github</a> <br/>
+    <a
+    id="cy-effective-orcid-url"
+    class="underline"
+     href="https://orcid.org/0009-0004-1643-4548"
+     target="orcid.widget"
+     rel="me noopener noreferrer"
+     style="vertical-align: top">
+     <img
+        src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
+        style="width: 1em; margin-inline-start: 0.5em"
+        alt="ORCID iD icon"/>
+      ORCID
+    </a> <br/>
 </ol>
 <p>My wife, Jacqueline Robbeloth, works for the <a href="https://www.galionschools.org/staff?search=robbeloth">Galion City School District</a> as the Supervisor of Learning. </p>
 <p>Our family pet is <a href="https://en.wikipedia.org/wiki/Leonie">Leonie</a>, a long-haired Dachshund.</p>

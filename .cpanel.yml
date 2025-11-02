@@ -6,4 +6,6 @@ deployment:
         --exclude ".git" \
         --exclude ".github" \
         --exclude ".cpanel.yml" \
+        --exclude "README.md" \
+        --exclude ".vscode" \
         ./ "$DEPLOYPATH"

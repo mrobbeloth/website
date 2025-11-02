@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH="/home/robbjsdz/public_html/"
-    - /bin/rsync -a --delete \
+    - /bin/rsync -a \
         --exclude ".git" \
         --exclude ".github" \
         --exclude ".cpanel.yml" \

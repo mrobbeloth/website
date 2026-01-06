@@ -95,7 +95,7 @@ echo "You are using: " . $user_agent_string . '.';
 ?>
 </p>
 
-<p> Copyright (c) <?php echo date('Y'); ?> by Michael Robbeloth. All Rights Reserved</p>
+<p> Copyright (c) <?php echo date('Y'); ?> by Michael Robbeloth. All Rights Reserved.</p>
 </footer>
 </body>
 </html>

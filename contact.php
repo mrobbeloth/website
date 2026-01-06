@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  <ul>
   <li><a href="index.php">Home</a></li>
   <li><a href="consulting.html">Consulting</a></li>
+  <li><a href="family.php">Family</a></li>
   <li><a href="https://www.linkedin.com/in/mrobbeloth/">LinkedIn</a></li>
   <li><a href="https://github.com/mrobbeloth">Github</a></li>
   <li><a aria-current="page" class="active" href="contact.php">Contact</a></li>
@@ -171,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <li><a href="https://www.linkedin.com/in/mrobbeloth/">LinkedIn</a></li>
     <li><a href="https://orcid.org/0009-0004-1643-4548" rel="me">ORCID</a></li>
   </ul>
-  <p>&copy; 2025 Michael Robbeloth. All Rights Reserved.</p>
+  <p>&copy; <?php echo date('Y'); ?> Michael Robbeloth. All Rights Reserved.</p>
 </footer>
 
 </body>

@@ -31,13 +31,13 @@
 
 <main class="page">
  <section class="hero">
-  <h1>Welcome to the Robbeloth Family Website</h1>
-  <p class="lede">Dr. Robbeloth is an academic leader, speaker, researcher, and consultant specializing in software, systems, and engineering education.</p>
+  <h1>Dr. Michael Robbeloth</h1>
+  <p class="lede">Academic leader, speaker, researcher, and consultant specializing in software, systems, and engineering education.</p>
   <div class="hero-actions">
    <a class="button-primary" href="consulting.html">Hire Me</a>
   </div>
   <div class="hero-media">
-    <img src="img/Robbeloth-2671-reduced.jpg" alt="Robbeloth family portrait in North-Central Ohio">
+    <img src="img/headshots/img_0521_even_smaller.png" alt="Dr. Michael Robbeloth">
   </div>
  </section>
 
@@ -70,12 +70,6 @@
       </a>
      </li>
   </ol>
-  <p>My wife, Jacqueline Robbeloth, works for the <a href="https://www.galionschools.org/staff?search=robbeloth">Galion City School District</a> as the Director of Learning Improvement. </p>
-  <p>Our family pet is <a href="https://en.wikipedia.org/wiki/Leonie">Leonie</a>, a long-haired Dachshund.</p>
- </section>
-
- <section class="content-section">
-    <img src="img/IMG_7617-reduced.JPG" alt="Octavia the Robbeloth family dog wearing a Princess Anna costume">
  </section>
 </main>
 
@@ -100,7 +94,7 @@ echo "You are using: " . $user_agent_string . '.';
 ?>
 </p>
 
-<p> Copyright (c) 2025 by Michael Robbeloth. All Rights Reserved</p>
+<p> Copyright (c) <?php echo date('Y'); ?> by Michael Robbeloth. All Rights Reserved</p>
 </footer>
 </body>
 </html>

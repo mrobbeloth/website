@@ -46,7 +46,7 @@
   <p title="Important links">  Dr. Michael Robbeloth is an Assistant Professor of Practice at <a href="https://www.osu.edu">The Ohio State University</a> in the 
   <a href="https://engineering.osu.edu/">College of Engineering&apos;s</a> <a href="https://eed.osu.edu/">Engineering Education Department </a> with a courtesy
   appointment in the <a href="https://cse.osu.edu/">Department of Computer Science and Engineering</a>. Previously, Dr. Robbeloth was an Associate Professor of <a href="https://cs.mvnu.edu/">Computer Science</a> at 
-  Mount Vernon Nazarene University (<a href="https://www.mvnu.edu">MVNU</a>) and worked in industry for companies of all sizes and from different industries including: <a href="https://www.kodak.com">Eastman Kodak</a>, <a href="https://dsautomation.com/">DSA Automation</a>, and <a href="https://www.pdiarm.com">PDi Communications, Inc.</a>
+  Mount Vernon Nazarene University (<a href="https://www.mvnu.edu">MVNU</a>) and worked in industry for companies of all sizes and from different sectors including: <a href="https://www.kodak.com">Eastman Kodak</a>, <a href="https://dsautomation.com/">DSA Automation</a>, and <a href="https://www.pdiarm.com">PDi Communications, Inc.</a>
   Dr. Robbeloth is available to take on professonal speaking engagements or consulting work (see my <a href="consulting.html">consulting</a> page).
   You can learn more about Dr. Robbeloth from following one of the links below: </p>
   <ol>

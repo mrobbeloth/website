@@ -20,7 +20,7 @@
 
 <nav aria-label="Primary navigation">
  <ul>
-  <li><a href="consulting.html">Hire Me</a></li>
+  <li><a href="consulting.php">Hire Me</a></li>
   <li><a href="family.php">Family</a></li>
   <li><a href="https://eed.osu.edu/people/robbeloth.1">Work @ OSU</a></li>
   <li><a href="https://www.linkedin.com/in/mrobbeloth/">LinkedIn Profile</a></li>

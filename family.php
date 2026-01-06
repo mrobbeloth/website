@@ -21,7 +21,7 @@
 <nav aria-label="Primary navigation">
  <ul>
   <li><a href="index.php">Home</a></li>
-  <li><a href="consulting.html">Hire Me</a></li>
+  <li><a href="consulting.php">Hire Me</a></li>
   <li><a aria-current="page" class="active" href="family.php">Family</a></li>
   <li><a href="https://www.linkedin.com/in/mrobbeloth/">LinkedIn</a></li>
   <li><a href="https://github.com/mrobbeloth">Github</a></li>

@@ -1,0 +1,36 @@
+name: Deploy to Namecheap
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SFTP
+        uses: pressable/github-action-sftp@v2
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: ${{ secrets.SFTP_PORT }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          privateKey: ${{ secrets.SFTP_PRIVATE_KEY }}
+          localPath: ./
+          remotePath: /public_html/
+
+      - name: Deploy via FTP (alternative if SFTP fails)
+        if: failure()
+        uses: aiothority/ftp-action@master
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          port: ${{ secrets.FTP_PORT }}
+          user: ${{ secrets.FTP_USER }}
+          passwd: ${{ secrets.FTP_PASSWORD }}
+          localPath: ./
+          remotePath: /public_html/
+          cleanRemote: false

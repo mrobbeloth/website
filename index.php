@@ -38,7 +38,7 @@
    <a class="button-primary" href="consulting.html">Hire Me</a>
   </div>
   <div class="hero-media">
-    <img src="img/headshots/img_0521_even_smaller.png" alt="Dr. Michael Robbeloth">
+    <img src="img/headshots/IMG_0521_even_smaller.png" alt="Dr. Michael Robbeloth">
   </div>
  </section>
 

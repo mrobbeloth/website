@@ -11,26 +11,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Deploy via SFTP
-        uses: pressable/github-action-sftp@v2
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          host: ${{ secrets.SFTP_HOST }}
-          port: ${{ secrets.SFTP_PORT }}
+          server: ${{ secrets.SFTP_HOST }}
+          port: ${{ secrets.SFTP_PORT || '22' }}
           username: ${{ secrets.SFTP_USERNAME }}
-          privateKey: ${{ secrets.SFTP_PRIVATE_KEY }}
-          localPath: ./
-          remotePath: /public_html/
+          ssh_private_key: ${{ secrets.SFTP_PRIVATE_KEY }}
+          local_path: './'
+          remote_path: '/public_html/'
+          args: '-o StrictHostKeyChecking=no'
 
-      - name: Deploy via FTP (alternative if SFTP fails)
+      - name: Deploy via FTP (fallback)
         if: failure()
-        uses: aiothority/ftp-action@master
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
         with:
-          host: ${{ secrets.FTP_HOST }}
-          port: ${{ secrets.FTP_PORT }}
-          user: ${{ secrets.FTP_USER }}
-          passwd: ${{ secrets.FTP_PASSWORD }}
-          localPath: ./
-          remotePath: /public_html/
-          cleanRemote: false
+          server: ${{ secrets.FTP_HOST }}
+          port: ${{ secrets.FTP_PORT || 21 }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: './'
+          server-dir: '/public_html/'
+          dangerous-clean-slate: false

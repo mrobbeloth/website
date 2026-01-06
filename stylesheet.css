@@ -121,6 +121,84 @@ main.page {
     border-radius: 8px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
+/* Contact form styles */
+.contact-form {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.form-row label {
+    font-weight: 600;
+}
+
+.form-row input,
+.form-row textarea {
+    padding: 10px 12px;
+    border: 1px solid #cfd8e3;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.form-actions {
+    margin-top: 12px;
+}
+
+.success {
+    background: #e8f5e9;
+    color: #1b5e20;
+    padding: 12px 14px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.error {
+    background: #fdecea;
+    color: #b71c1c;
+    padding: 12px 14px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.hp-field {
+    position: absolute;
+    left: -5000px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+/* Accessibility footer */
+footer.accessibility-footer {
+    margin-top: 32px;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-top: 1px solid #e0e6ed;
+}
+
+footer.accessibility-footer ul {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    padding: 0;
+    margin: 0 0 8px;
+}
+
+footer.accessibility-footer a {
+    color: #0f4c81;
+    text-decoration: none;
+}
+
+footer.accessibility-footer a:hover,
+footer.accessibility-footer a:focus {
+    text-decoration: underline;
+}
 
 p {
     line-height: 1.7;

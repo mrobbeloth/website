@@ -25,6 +25,7 @@
   <li><a href="https://www.linkedin.com/in/mrobbeloth/">LinkedIn Profile</a></li>
   <li><a href="https://www.twitter.com/mrobbeloth">Twitter Profile</a></li>
   <li><a href="https://github.com/mrobbeloth">Github Profile</a></li>
+  <li><a href="contact.php">Contact</a></li>
  </ul>
 </nav>
 
@@ -81,6 +82,14 @@
 <footer>
 <hr/>
 <a href="https://github.com/mrobbeloth/website"> Github Repository for website </a>
+
+<div class="accessibility-footer">
+  <ul>
+    <li><a href="contact.php">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/mrobbeloth/">LinkedIn</a></li>
+    <li><a href="https://orcid.org/0009-0004-1643-4548" rel="me">ORCID</a></li>
+  </ul>
+</div>
 
 <p>
 <?php

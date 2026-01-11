@@ -7,20 +7,85 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-// Generate simple challenge (math captcha)
-if (empty($_SESSION['challenge_a']) || empty($_SESSION['challenge_b'])) {
-    $_SESSION['challenge_a'] = random_int(1, 9);
-    $_SESSION['challenge_b'] = random_int(1, 9);
+// Generate enhanced challenge (math captcha) with multiple operations
+// Always regenerate to prevent reuse and increase security
+function generateChallenge() {
+    $operations = ['+', '-', '*'];
+    $operation = $operations[array_rand($operations)];
+    $a = random_int(5, 99);
+    
+    // Adjust range based on operation to keep answers reasonable
+    if ($operation === '*') {
+        $a = random_int(2, 12);
+        $b = random_int(2, 12);
+    } else {
+        $b = random_int(5, 99);
+    }
+    
+    // For subtraction, ensure positive result
+    if ($operation === '-' && $a < $b) {
+        [$a, $b] = [$b, $a];
+    }
+    
+    switch ($operation) {
+        case '+':
+            $answer = $a + $b;
+            break;
+        case '-':
+            $answer = $a - $b;
+            break;
+        case '*':
+            $answer = $a * $b;
+            break;
+    }
+    
+    return [
+        'a' => $a,
+        'b' => $b,
+        'operation' => $operation,
+        'answer' => $answer
+    ];
+}
+
+// Initialize attempt tracking
+if (empty($_SESSION['challenge_attempts'])) {
+    $_SESSION['challenge_attempts'] = 0;
+}
+if (empty($_SESSION['challenge_locked_until'])) {
+    $_SESSION['challenge_locked_until'] = 0;
+}
+
+// Only regenerate challenge if not currently locked
+$now = time();
+$isLocked = $now < $_SESSION['challenge_locked_until'];
+if (!$isLocked) {
+    $challenge = generateChallenge();
+    $_SESSION['challenge_a'] = $challenge['a'];
+    $_SESSION['challenge_b'] = $challenge['b'];
+    $_SESSION['challenge_operation'] = $challenge['operation'];
+    $_SESSION['challenge_answer'] = $challenge['answer'];
 }
 
 $errors = [];
 $success = false;
+$formDisabled = $isLocked;
+
+// Show lockout message even on page load (GET request)
+if ($isLocked) {
+    $remainingSeconds = ceil(($_SESSION['challenge_locked_until'] - $now) / 60);
+    $errors[] = "Too many failed attempts. Please try again in $remainingSeconds minute(s).";
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Throttle
-    $now = time();
     if (isset($_SESSION['last_submit']) && ($now - $_SESSION['last_submit']) < $minSubmitIntervalSeconds) {
         $errors[] = 'Please wait a bit before submitting again.';
+    }
+    
+    // Check if challenge is locked
+    if ($now < $_SESSION['challenge_locked_until']) {
+        $remainingSeconds = ceil(($_SESSION['challenge_locked_until'] - $now) / 60);
+        $errors[] = "Too many failed attempts. Please try again in $remainingSeconds minute(s).";
     }
 
     // CSRF check
@@ -37,9 +102,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Challenge check
     $challenge = trim($_POST['challenge'] ?? '');
-    $expected = $_SESSION['challenge_a'] + $_SESSION['challenge_b'];
+    $expected = $_SESSION['challenge_answer'] ?? null;
     if ($challenge === '' || !ctype_digit($challenge) || (int)$challenge !== $expected) {
         $errors[] = 'Please answer the challenge question correctly.';
+        // Track failed attempts
+        $_SESSION['challenge_attempts'] = ($_SESSION['challenge_attempts'] ?? 0) + 1;
+        // Lock after 3 failed attempts for 15 minutes
+        if ($_SESSION['challenge_attempts'] >= 3) {
+            $_SESSION['challenge_locked_until'] = $now + (15 * 60);
+        }
     }
 
     // Inputs
@@ -73,9 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (@mail($recipientEmail, $safeSubject, $body, $headersStr)) {
                 $success = true;
                 $_SESSION['last_submit'] = $now;
-                // Reset challenge for next time
-                $_SESSION['challenge_a'] = random_int(1, 9);
-                $_SESSION['challenge_b'] = random_int(1, 9);
+                // Reset challenge attempts on successful submission
+                $_SESSION['challenge_attempts'] = 0;
+                $_SESSION['challenge_locked_until'] = 0;
             } else {
                 $errors[] = 'Failed to send email. Please try again later.';
             }
@@ -136,31 +207,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="form-row">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" required <?= $formDisabled ? 'disabled' : '' ?>>
     </div>
 
     <div class="form-row">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required <?= $formDisabled ? 'disabled' : '' ?>>
     </div>
 
     <div class="form-row">
       <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" placeholder="Consulting inquiry">
+      <input type="text" id="subject" name="subject" placeholder="Consulting inquiry" <?= $formDisabled ? 'disabled' : '' ?>>
     </div>
 
     <div class="form-row">
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="6" required></textarea>
+      <textarea id="message" name="message" rows="6" required <?= $formDisabled ? 'disabled' : '' ?>></textarea>
     </div>
 
     <div class="form-row">
-      <label for="challenge">Challenge: What is <?= $_SESSION['challenge_a'] ?> + <?= $_SESSION['challenge_b'] ?>?</label>
-      <input type="text" id="challenge" name="challenge" inputmode="numeric" pattern="[0-9]*" required>
+      <label for="challenge">Challenge: What is <?= $_SESSION['challenge_a'] ?> <?= $_SESSION['challenge_operation'] ?> <?= $_SESSION['challenge_b'] ?>?</label>
+      <input type="text" id="challenge" name="challenge" inputmode="numeric" pattern="[0-9]*" required <?= $formDisabled ? 'disabled' : '' ?>>
     </div>
 
     <div class="form-actions">
-      <button type="submit" class="button-primary">Send Message</button>
+      <button type="submit" class="button-primary" <?= $formDisabled ? 'disabled' : '' ?>>Send Message</button>
     </div>
   </form>
  </section>
